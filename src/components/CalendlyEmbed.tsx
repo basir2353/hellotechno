@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 export const CALENDLY_URL =
-  'https://calendly.com/rabbiazaheer8/30min?hide_gdpr_banner=1&primary_color=1a63d8'
+  'https://calendly.com/shivadesai1/30min?hide_gdpr_banner=1&primary_color=1a63d8'
 const CALENDLY_SCRIPT = 'https://assets.calendly.com/assets/external/widget.js'
 const CALENDLY_CSS = 'https://assets.calendly.com/assets/external/widget.css'
 

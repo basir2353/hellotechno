@@ -6,6 +6,7 @@ import {
   Check,
   Clock3,
   Languages,
+  MapPin,
   MessageCircle,
   Phone,
   ShieldCheck,
@@ -227,8 +228,8 @@ export function Demo() {
 
   const headline = ar ? 'احجز عرضاً مجانياً' : 'Book a free demo'
   const support = ar
-    ? 'ثلاثون دقيقة على قنوات عملك — مباشرة، بالعربية والإنجليزية.'
-    : 'Thirty minutes on your business channels — live, in English and Arabic.'
+    ? 'ثلاثون دقيقة على قنوات عملك — حضوري أو عبر الهاتف، بالعربية والإنجليزية.'
+    : 'Thirty minutes on your business channels — in person or by phone, in English and Arabic.'
 
   return (
     <main id="main" className="relative min-h-svh overflow-x-hidden bg-canvas text-ink">
@@ -437,6 +438,35 @@ export function Demo() {
                 : 'Hello Techno’s calendar is right here. Confirm in under a minute — no signup first.'}
             </p>
 
+            <div className="mt-5 grid gap-2.5 sm:grid-cols-2">
+              <div className="flex items-start gap-3 rounded-[16px] border border-line bg-white/80 px-3.5 py-3 backdrop-blur-sm">
+                <span className="grid size-9 shrink-0 place-items-center rounded-[12px] bg-brand-soft text-brand">
+                  <MapPin className="size-4" aria-hidden />
+                </span>
+                <div>
+                  <p className="text-[13.5px] font-semibold tracking-[-0.02em] text-ink">
+                    {ar ? 'حضورياً' : 'In person'}
+                  </p>
+                  <p className="mt-0.5 text-[12px] leading-snug text-muted">
+                    {ar ? 'لقاء وجهاً لوجه في الدوحة' : 'Meet face-to-face in Doha'}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 rounded-[16px] border border-line bg-white/80 px-3.5 py-3 backdrop-blur-sm">
+                <span className="grid size-9 shrink-0 place-items-center rounded-[12px] bg-teal-soft text-teal">
+                  <Phone className="size-4" aria-hidden />
+                </span>
+                <div>
+                  <p className="text-[13.5px] font-semibold tracking-[-0.02em] text-ink">
+                    {ar ? 'مكالمة هاتفية' : 'Phone call'}
+                  </p>
+                  <p className="mt-0.5 text-[12px] leading-snug text-muted">
+                    {ar ? 'نطلبك على رقمك' : 'We’ll call your number'}
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div className="mt-7 rounded-[22px] border border-line bg-white/80 p-5 backdrop-blur-sm">
               <p className="flex items-center gap-2 text-[13px] font-semibold tracking-[-0.02em] text-ink">
                 <ShieldCheck className="size-4 text-teal" aria-hidden />
@@ -477,8 +507,20 @@ export function Demo() {
                 {ar ? 'احجز جلسة ٣٠ دقيقة' : 'Book a 30-minute session'}
               </p>
               <p className="mt-0.5 text-[12px] text-muted">
-                {ar ? 'منتج حي — لا شرائح' : 'Live product — not slides'}
+                {ar
+                  ? 'منتج حي — حضوري أو عبر الهاتف'
+                  : 'Live product — in person or by phone'}
               </p>
+              <div className="mt-2.5 flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-2.5 py-1 text-[11px] font-medium text-ink-2">
+                  <MapPin className="size-3 text-brand" aria-hidden />
+                  {ar ? 'حضورياً' : 'In person'}
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-2.5 py-1 text-[11px] font-medium text-ink-2">
+                  <Phone className="size-3 text-teal" aria-hidden />
+                  {ar ? 'هاتف' : 'Phone'}
+                </span>
+              </div>
             </div>
             <CalendlyEmbed height={680} />
           </motion.div>
