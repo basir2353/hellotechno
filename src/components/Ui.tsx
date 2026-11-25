@@ -141,6 +141,7 @@ export function Btn({
   children,
   iconRight,
   external,
+  onClick,
 }: {
   href: string
   variant?: keyof typeof buttonVariants
@@ -149,6 +150,7 @@ export function Btn({
   children: ReactNode
   iconRight?: ReactNode
   external?: boolean
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void
 }) {
   const classNames = cx(buttonBase, buttonVariants[variant], buttonSizes[size], className)
   const content = (
@@ -160,7 +162,7 @@ export function Btn({
 
   if (!external && href.startsWith('/') && !href.startsWith('//')) {
     return (
-      <Link to={href} className={classNames}>
+      <Link to={href} className={classNames} onClick={onClick}>
         {content}
       </Link>
     )
@@ -170,6 +172,7 @@ export function Btn({
     <a
       href={href}
       className={classNames}
+      onClick={onClick}
       {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
     >
       {content}

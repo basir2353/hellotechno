@@ -1,6 +1,6 @@
 import { ArrowRight, LoaderCircle } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router'
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router'
 
 import { Brand } from '../components/Logo'
 import { SITE } from '../data'
@@ -14,8 +14,14 @@ type Mode = 'login' | 'signup'
 export function Auth() {
   const { copy } = useLocale()
   const navigate = useNavigate()
+  const location = useLocation()
   const [params, setParams] = useSearchParams()
-  const mode: Mode = params.get('mode') === 'login' ? 'login' : 'signup'
+  const mode: Mode =
+    params.get('mode') === 'signup'
+      ? 'signup'
+      : params.get('mode') === 'login' || location.pathname === '/login'
+        ? 'login'
+        : 'signup'
   const selectedPlan = params.get('plan')
   const selectedCurrency = params.get('currency')
   const selectedDate = params.get('date')
@@ -35,7 +41,7 @@ export function Auth() {
 
   const setMode = (next: Mode) => {
     setError('')
-    setParams(next === 'signup' ? {} : { mode: 'login' }, { replace: true })
+    setParams(next === 'login' ? { mode: 'login' } : { mode: 'signup' }, { replace: true })
   }
 
   const onSubmit = async (event: FormEvent) => {

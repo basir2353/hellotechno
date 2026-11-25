@@ -10,6 +10,7 @@ import { SmoothScroll } from './components/SmoothScroll'
 import { LocaleProvider } from './lib/locale'
 import { AiEmployee } from './pages/AiEmployee'
 import { Auth } from './pages/Auth'
+import { Demo } from './pages/Demo'
 import { Home } from './pages/Home'
 import { AestheticsDentalPage } from './pages/industries/AestheticsDentalPage'
 import { AllIndustriesPage } from './pages/industries/AllIndustriesPage'
@@ -118,9 +119,9 @@ export function App() {
                   </MarketingLayout>
                 }
               />
-              <Route path="/demo" element={<Auth />} />
-              <Route path="/login" element={<Navigate to="/demo?mode=login" replace />} />
-              <Route path="/signup" element={<Navigate to="/demo" replace />} />
+              <Route path="/demo" element={<Demo />} />
+              <Route path="/login" element={<Auth />} />
+              <Route path="/signup" element={<Navigate to="/login?mode=signup" replace />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </SmoothScroll>

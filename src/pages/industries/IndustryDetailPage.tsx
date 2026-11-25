@@ -84,7 +84,7 @@ export function IndustryDetailPage() {
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <Link
-                to={`/demo?industry=${encodeURIComponent(copy.title)}`}
+                to="/demo"
                 className="inline-flex h-11 items-center gap-2 rounded-full bg-[linear-gradient(115deg,#1a63d8,#4b53e8_58%,#0e9a9e)] px-6 text-[14px] font-medium text-white shadow-[0_12px_26px_-16px_rgb(26_99_216/0.9)] transition-[filter,transform] hover:brightness-105 active:scale-[0.98]"
               >
                 {ar ? 'احجز عرضاً مجانياً' : 'Book a free demo'}
