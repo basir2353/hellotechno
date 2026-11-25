@@ -4,6 +4,7 @@ import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router'
 
 import { Mark } from '../components/Logo'
+import { CalendlyEmbed } from '../components/CalendlyEmbed'
 
 import { Diagram } from '../components/Diagram'
 import { HeroOrbit } from '../components/HeroOrbit'
@@ -796,15 +797,15 @@ function Contact() {
           aria-hidden
         />
 
-        <div className="relative mx-auto max-w-2xl text-center">
+        <div className="relative mx-auto grid max-w-[1200px] items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
             <span className="caps inline-flex items-center gap-2 text-white/60">
               <span className="h-px w-6 bg-white/40" aria-hidden />
               {copy.demo.eyebrow}
             </span>
-            <h2 className="display mt-4 text-[clamp(2rem,1.2rem+2.6vw,3.2rem)] text-white">{copy.demo.title}</h2>
-            <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-night-muted">{copy.demo.body}</p>
-            <ul className="mx-auto mt-6 max-w-md space-y-2.5 text-left">
+            <h2 className="display mt-4 text-[clamp(2rem,1.2rem+2.6vw,3.1rem)] text-white">{copy.demo.title}</h2>
+            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-night-muted">{copy.demo.body}</p>
+            <ul className="mt-6 max-w-md space-y-2.5 text-left">
               {copy.demo.bullets.map((b) => (
                 <li key={b} className="flex items-center gap-2.5 text-[13.5px] text-white/80">
                   <span className="grid size-5 place-items-center rounded-full bg-teal/20 text-teal">
@@ -816,15 +817,13 @@ function Contact() {
             </ul>
             <Link
               to="/demo"
-              className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-[15px] font-medium text-brand-deep shadow-[0_16px_36px_-18px_rgb(255_255_255/0.55)] transition-[transform,filter] hover:brightness-105 active:scale-[0.98]"
+              className="mt-7 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-[15px] font-medium text-brand-deep shadow-[0_16px_36px_-18px_rgb(255_255_255/0.55)] transition-[transform,filter] hover:brightness-105 active:scale-[0.98]"
             >
               {copy.demo.cta}
               <ArrowRight className="size-4" aria-hidden />
             </Link>
             <p className="mt-3 text-[12.5px] text-white/50">{copy.demo.hint}</p>
-          </Reveal>
 
-          <Reveal delay={0.1}>
             <div className="mt-8 grid gap-2 sm:grid-cols-3">
               <a
                 href={`mailto:${SITE.email}`}
@@ -859,6 +858,12 @@ function Contact() {
                   <span className="block truncate text-[12.5px] font-medium text-white">{SITE.phone}</span>
                 </span>
               </a>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="overflow-hidden rounded-[22px] border border-white/15 bg-white p-2 shadow-2xl">
+              <CalendlyEmbed height={620} />
             </div>
           </Reveal>
         </div>
