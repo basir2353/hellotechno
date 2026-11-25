@@ -23,8 +23,6 @@ export const SITE = {
   whatsapp: 'https://wa.me/97431637274',
   location: 'Doha, Qatar',
   serving: 'Built for hospitality, clinics, restaurants and growing businesses across the GCC',
-  /** HeyServo public widget key (`pk_live_...`) for the live chat & voice launcher. */
-  heyservoPublicKey: 'pk_live_JQiXd7-d-S5K2oAddt3We7D_5BTPIGDz',
 } as const
 
 export const NAV = [

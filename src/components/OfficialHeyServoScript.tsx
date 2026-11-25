@@ -1,13 +1,11 @@
 import { useEffect } from 'react'
 
-import { SITE } from '../data'
-
 const SCRIPT_SRC = 'https://admin-api.heyservo.ai/widget.js'
 const KEY_RE = /^pk_live_[A-Za-z0-9_-]{20,64}$/
 const SCRIPT_ATTR = 'data-heyservo-official'
 
 function publicKey() {
-  return (import.meta.env.VITE_HEYSERVO_PUBLIC_KEY || SITE.heyservoPublicKey || '').trim()
+  return (import.meta.env.VITE_HEYSERVO_PUBLIC_KEY || '').trim()
 }
 
 /**
