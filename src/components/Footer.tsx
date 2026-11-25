@@ -1,244 +1,113 @@
-"use client";
+import { ArrowUp, MapPin } from 'lucide-react'
+import { Link } from 'react-router'
 
-import Link from "next/link";
-import { IconChat, IconMail, IconPhone, IconPin, IconWhatsApp, LogoMark } from "@/components/Icons";
-import { useLocale } from "@/lib/locale";
-import { brand, images, routes } from "@/lib/site";
-
-const partners = [
-  { src: images.partnerMicrosoft, label: "Microsoft for Startups" },
-  { src: images.partnerAws, label: "AWS for Startups" },
-  { src: images.partnerGcp, label: "GCP for Startups" },
-  { src: images.partnerAnthropic, label: "Anthropic Claude for Startups" },
-  { src: images.partnerAtlassian, label: "Atlassian for Startups" },
-] as const;
+import { SITE } from '../data'
+import { useLocale } from '../lib/locale'
+import { Brand } from './Logo'
+import { ChannelMark, SocialRow } from './Social'
+import { Reveal } from './Ui'
 
 export function Footer() {
-  const { t, locale, setLocale } = useLocale();
-  const en = locale === "en";
-
-  const platform = [
-    [routes.pricing, en ? "Pricing Plans" : "خطط الأسعار"],
-    ["/#why-os", en ? "Why a Platform" : "لماذا منصة"],
-    [routes.useCases, t.nav.useCases],
-    ["/#product", en ? "Dashboard" : "لوحة التحكم"],
-    ["/#numbers", en ? "Numbers" : "الأرقام"],
-    ["/#trust", en ? "Trust" : "الثقة"],
-    [routes.faq, t.nav.faq],
-  ] as const;
-
-  const industries = t.nav.industryItems.map((item) => [item.href, item.title] as const);
-
-  const company = [
-    [routes.trial, en ? "Start Free Trial" : "ابدأ تجربة مجانية"],
-    [routes.demo, en ? "Book a Free Demo" : "احجز عرضًا مجانيًا"],
-    [routes.talk, en ? "Contact" : "تواصل"],
-    [routes.partnerships, en ? "Partnerships" : "الشراكات"],
-    [routes.blog, t.nav.blog],
-    [routes.news, t.nav.news],
-  ] as const;
-
-  const legal = [
-    [routes.privacy, en ? "Privacy Policy" : "سياسة الخصوصية"],
-    [routes.terms, en ? "Terms & Conditions" : "الشروط والأحكام"],
-  ] as const;
+  const { copy } = useLocale()
 
   return (
-    <>
-      <footer className="site-footer">
-        <div className="shell site-footer-grid">
-          <div className="site-footer-brand">
-            <Link href={routes.home} className="flex items-center gap-2.5">
-              <LogoMark className="h-9 w-9" />
-              <span className="text-[1.05rem] font-semibold tracking-tight text-white">{brand.short}</span>
-            </Link>
-
-            <p className="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-[#aeb4c8]">
-              {en
-                ? "The AI customer experience platform. Deployed, governed, managed."
-                : "منصة تجربة العملاء بالذكاء الاصطناعي. تُنشر وتُحكم وتُدار."}
-            </p>
-
-            <div className="mt-6 space-y-5 text-sm text-[#aeb4c8]">
-              <div className="flex gap-2.5">
-                <IconPin className="mt-0.5 h-4 w-4 shrink-0 text-[#8b93ad]" />
-                <div>
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-white">
-                    {en ? "Dubai, UAE" : "دبي، الإمارات"}
-                  </p>
-                  <p className="mt-1 max-w-xs leading-relaxed">
-                    {en ? "Dubai, United Arab Emirates" : "دبي، الإمارات العربية المتحدة"}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-2.5">
-                <IconPin className="mt-0.5 h-4 w-4 shrink-0 text-[#8b93ad]" />
-                <div>
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-white">
-                    {en ? "Bahrain" : "البحرين"}
-                  </p>
-                  <p className="mt-1 max-w-xs leading-relaxed">
-                    {en ? "Manama, Bahrain" : "المنامة، البحرين"}
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <nav className="site-footer-nav" aria-label={en ? "Footer" : "تذييل"}>
-            <div>
-              <p className="site-footer-heading">{en ? "Platform" : "المنصة"}</p>
-              <ul className="site-footer-links">
-                {platform.map(([href, label]) => (
-                  <li key={href}>
-                    <Link href={href}>{label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="site-footer-heading">{t.nav.industries}</p>
-              <ul className="site-footer-links">
-                {industries.map(([href, label]) => (
-                  <li key={href}>
-                    <Link href={href}>{label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="site-footer-heading">{en ? "Company" : "الشركة"}</p>
-              <ul className="site-footer-links">
-                {company.map(([href, label]) => (
-                  <li key={href}>
-                    {href.startsWith("http") ? (
-                      <a href={href} target="_blank" rel="noopener noreferrer">
-                        {label}
-                      </a>
-                    ) : (
-                      <Link href={href}>{label}</Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="site-footer-heading">{en ? "Legal" : "قانوني"}</p>
-              <ul className="site-footer-links">
-                {legal.map(([href, label]) => (
-                  <li key={href}>
-                    <Link href={href}>{label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </nav>
-        </div>
-
-        <div className="shell site-footer-selected">
-          <a className="site-footer-email is-row" href={`mailto:${brand.email}`}>
-            <IconMail className="h-4 w-4 shrink-0" />
-            {brand.email}
-          </a>
-          <p className="site-footer-selected-label">{en ? "Selected for" : "مختارة لـ"}</p>
-          <ul className="site-footer-partners">
-            {partners.map((partner) => (
-              <li key={partner.label} className="site-footer-partner">
-                <span className="site-footer-partner-mark">
-                  {/* native img keeps SVG logos small/consistent in footer cards */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={partner.src} alt="" className="site-footer-partner-logo" />
-                </span>
-                <span className="site-footer-partner-name">{partner.label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="shell site-footer-bottom">
-          <p className="site-footer-rights">
-            {en ? `© 2026 ${brand.short}. All rights reserved.` : `© 2026 ${brand.short}. جميع الحقوق محفوظة.`}
-          </p>
-          <div className="site-footer-socials" aria-label={en ? "Social" : "التواصل"}>
-            {[
-              ["LinkedIn", "in"],
-              ["YouTube", "▶"],
-              ["Instagram", "ig"],
-              ["Facebook", "f"],
-              ["X", "𝕏"],
-            ].map(([label, glyph]) => (
-              <span key={label} className="site-footer-social" title={label} aria-label={label}>
-                {glyph}
-              </span>
-            ))}
-          </div>
-          <div className="site-footer-lang">
-            <button
-              type="button"
-              className={locale === "en" ? "is-active" : ""}
-              onClick={() => setLocale("en")}
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              className={`lang-ar ${locale === "ar" ? "is-active" : ""}`}
-              onClick={() => setLocale("ar")}
-            >
-              العربية
-            </button>
-          </div>
-        </div>
-      </footer>
-
+    <footer className="on-dark relative overflow-hidden bg-night px-4 pt-16 pb-8 text-white sm:px-6">
       <div
-        className="float-stack !hidden min-[361px]:!flex"
-        aria-label={en ? "Contact shortcuts" : "اختصارات التواصل"}
-      >
-        <a
-          href={routes.talk}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="float-btn bg-[#25d366]"
-          aria-label={en ? "WhatsApp" : "واتساب"}
-        >
-          <IconWhatsApp className="h-5 w-5" />
-        </a>
-        <Link href={routes.demo} className="float-btn bg-[var(--primary)]" aria-label={en ? "Book a demo" : "احجز عرضًا"}>
-          <IconChat className="h-5 w-5" />
-        </Link>
-        <div className="float-stack-row">
-          <Link href={routes.trial} className="float-trial">
-            <span className="float-trial-dot" aria-hidden />
-            {en ? "Start Free Trial" : "ابدأ تجربة مجانية"}
-          </Link>
-          <a
-            href={routes.talk}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="float-btn bg-[#3730a3]"
-            aria-label={en ? "Contact" : "تواصل"}
-          >
-            <IconPhone className="h-5 w-5" />
-          </a>
-        </div>
-      </div>
+        className="pointer-events-none absolute -top-40 left-1/2 size-[720px] -translate-x-1/2 rounded-full opacity-40 blur-3xl"
+        style={{ background: 'radial-gradient(circle, #1a63d8 0%, #6f4bf2 45%, transparent 70%)' }}
+        aria-hidden
+      />
+      <div className="relative mx-auto w-full max-w-[1320px]">
+        <Reveal className="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[1.4fr_1fr_1.2fr]">
+          <div>
+            <Brand size="lg" light onDarkPlate />
+            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-night-muted">{copy.footer.blurb}</p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {copy.footer.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border px-3 py-1 text-[12px] text-white/80"
+                  style={{ borderColor: 'rgb(255 255 255 / 0.18)', background: 'rgb(255 255 255 / 0.05)' }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="mt-6">
+              <p className="caps text-[10px] text-white/40">{copy.footer.answersWhere}</p>
+              <SocialRow className="mt-3 gap-2" itemClassName="size-9" label={copy.footer.answersWhere} />
+            </div>
+          </div>
 
-      <div className="sticky-mobile-cta">
-        <div className="sticky-mobile-cta-row">
-          <Link href={routes.trial} className="btn-primary sticky-cta-btn">
-            {locale === "ar" ? "تجربة" : "Free trial"}
-          </Link>
-          <Link href={routes.demo} className="btn-secondary sticky-cta-btn">
-            {locale === "ar" ? "عرض" : "Demo"}
-          </Link>
-        </div>
+          <nav aria-label="Footer">
+            <p className="caps text-white/45">{copy.footer.sections}</p>
+            <ul className="mt-4 space-y-2.5">
+              {copy.nav.map((item) => (
+                <li key={item.href}>
+                  {item.href.startsWith('/') ? (
+                    <Link to={item.href} className="text-[14.5px] text-white/80 transition-colors hover:text-white">
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a href={item.href} className="text-[14.5px] text-white/80 transition-colors hover:text-white">
+                      {item.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <p className="caps text-white/45">{copy.footer.talkSales}</p>
+            <ul className="mt-4 space-y-3 text-[14.5px]">
+              <li>
+                <a href={`mailto:${SITE.email}`} className="group flex items-center gap-2.5 text-white/85 transition-colors hover:text-white">
+                  <ChannelMark kind="email" className="size-8" glyphClassName="size-4" rounded="rounded-full" />
+                  <span className="break-all">{SITE.email}</span>
+                </a>
+              </li>
+              <li>
+                <a href={SITE.phoneHref} className="group flex items-center gap-2.5 text-white/85 transition-colors hover:text-white">
+                  <ChannelMark kind="voice" className="size-8" glyphClassName="size-4" rounded="rounded-full" />
+                  {SITE.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={SITE.whatsapp}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={`${copy.navUi.chatWhatsApp} ${SITE.phone}`}
+                  className="group flex items-center gap-2.5 text-white/85 transition-colors hover:text-white"
+                >
+                  <ChannelMark kind="whatsapp" className="size-8" glyphClassName="size-4" rounded="rounded-full" />
+                  WhatsApp · {SITE.phone}
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5 text-white/70">
+                <span className="grid size-8 shrink-0 place-items-center rounded-full border border-white/15 text-white/70">
+                  <MapPin className="size-3.5" aria-hidden />
+                </span>
+                {SITE.location}
+              </li>
+            </ul>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.08} className="flex flex-col-reverse items-start justify-between gap-4 pt-6 sm:flex-row sm:items-center">
+          <p className="text-[12.5px] text-white/45">
+            © {new Date().getFullYear()} {SITE.brand}. {copy.footer.rights}
+          </p>
+          <a
+            href="#top"
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-2 text-[12.5px] text-white/70 transition-colors hover:border-white/40 hover:text-white"
+          >
+            {copy.footer.backTop}
+            <ArrowUp className="size-3.5" aria-hidden />
+          </a>
+        </Reveal>
       </div>
-    </>
-  );
+    </footer>
+  )
 }
