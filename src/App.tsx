@@ -12,7 +12,9 @@ import { AiEmployee } from './pages/AiEmployee'
 import { Auth } from './pages/Auth'
 import { Home } from './pages/Home'
 import { AestheticsDentalPage } from './pages/industries/AestheticsDentalPage'
+import { AllIndustriesPage } from './pages/industries/AllIndustriesPage'
 import { HospitalityPage } from './pages/industries/HospitalityPage'
+import { IndustryDetailPage } from './pages/industries/IndustryDetailPage'
 import { RestaurantsPage } from './pages/industries/RestaurantsPage'
 import { SmallBusinessPage } from './pages/industries/SmallBusinessPage'
 import { ResourceGuide } from './pages/ResourceGuide'
@@ -69,6 +71,14 @@ export function App() {
                 }
               />
               <Route
+                path="/industries"
+                element={
+                  <MarketingLayout>
+                    <AllIndustriesPage />
+                  </MarketingLayout>
+                }
+              />
+              <Route
                 path="/industries/hospitality"
                 element={
                   <MarketingLayout>
@@ -97,6 +107,14 @@ export function App() {
                 element={
                   <MarketingLayout>
                     <SmallBusinessPage />
+                  </MarketingLayout>
+                }
+              />
+              <Route
+                path="/industries/:slug"
+                element={
+                  <MarketingLayout>
+                    <IndustryDetailPage />
                   </MarketingLayout>
                 }
               />

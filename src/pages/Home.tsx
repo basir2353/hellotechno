@@ -328,7 +328,7 @@ function Platform() {
 /* -------------------------------------------------------------- industries */
 
 function Industries() {
-  const { copy } = useLocale()
+  const { copy, locale } = useLocale()
   const [active, setActive] = useState(0)
   const industries = INDUSTRIES.map((item) => {
     const t = copy.industries.items.find((i) => i.key === item.key)
@@ -410,9 +410,18 @@ function Industries() {
                     </div>
                   </div>
                 </div>
-                <Btn href="/demo" variant="outline" size="md" className="mt-7 self-start">
-                  {copy.industries.seeOp}
-                </Btn>
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                  <Btn href="/demo" variant="outline" size="md">
+                    {copy.industries.seeOp}
+                  </Btn>
+                  <Link
+                    to="/industries"
+                    className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-[#5457e6] hover:underline"
+                  >
+                    {locale === 'ar' ? 'تصفح جميع القطاعات (15)' : 'Browse all 15 industries'}
+                    <ArrowRight className="size-3.5 rtl:rotate-180" aria-hidden />
+                  </Link>
+                </div>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">

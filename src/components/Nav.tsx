@@ -235,6 +235,17 @@ export function Nav() {
                               )
                             })}
                           </div>
+                          <div className="mt-2 border-t border-line pt-2">
+                            <Link
+                              to="/industries"
+                              role="menuitem"
+                              onClick={() => setIndustriesOpen(false)}
+                              className="flex items-center justify-between rounded-[12px] px-3 py-2 text-[13px] font-semibold text-[#5457e6] transition-colors hover:bg-[#f5f6ff]"
+                            >
+                              <span>{locale === 'ar' ? 'استعرض جميع القطاعات (15)' : 'Explore all 15 industries'}</span>
+                              <ArrowUpRight className="size-3.5" aria-hidden />
+                            </Link>
+                          </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -373,6 +384,14 @@ export function Nav() {
                                 </Link>
                               )
                             })}
+                            <Link
+                              to="/industries"
+                              onClick={() => setOpen(false)}
+                              className="mt-1 flex items-center justify-between rounded-[12px] bg-[#f5f6ff] px-3 py-2.5 text-[13.5px] font-semibold text-[#5457e6]"
+                            >
+                              <span>{locale === 'ar' ? 'جميع القطاعات (15)' : 'Explore all 15 industries'}</span>
+                              <ArrowUpRight className="size-4" aria-hidden />
+                            </Link>
                           </div>
                         )}
                       </div>

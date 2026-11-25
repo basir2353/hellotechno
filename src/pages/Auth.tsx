@@ -20,6 +20,7 @@ export function Auth() {
   const selectedCurrency = params.get('currency')
   const selectedDate = params.get('date')
   const selectedTime = params.get('time')
+  const selectedIndustry = params.get('industry')
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -128,8 +129,13 @@ export function Auth() {
         <h1 className="display mt-6 text-[clamp(1.7rem,1.35rem+1.4vw,2.25rem)] text-ink">{title}</h1>
         <p className="mt-2 text-[14.5px] text-muted">{body}</p>
 
-        {(selectedPlan || selectedDate) && mode === 'signup' && (
+        {(selectedPlan || selectedDate || selectedIndustry) && mode === 'signup' && (
           <div className="mt-4 flex flex-wrap gap-2 rounded-[14px] border border-brand/20 bg-brand-soft/60 px-3.5 py-2.5 text-[12.5px] font-medium text-brand-deep">
+            {selectedIndustry && (
+              <span>
+                Industry: <strong>{selectedIndustry}</strong>
+              </span>
+            )}
             {selectedPlan && (
               <span>
                 Plan: <strong>{selectedPlan}</strong>
