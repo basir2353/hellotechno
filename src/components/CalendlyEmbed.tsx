@@ -28,7 +28,7 @@ export function ensureCalendly(): Promise<void> {
   }
   if (calendlyReady) return calendlyReady
 
-  calendlyReady = new Promise((resolve, reject) => {
+  const promise = new Promise<void>((resolve, reject) => {
     if (!document.querySelector(`link[href="${CALENDLY_CSS}"]`)) {
       const link = document.createElement('link')
       link.rel = 'stylesheet'
@@ -58,7 +58,8 @@ export function ensureCalendly(): Promise<void> {
     throw err
   })
 
-  return calendlyReady
+  calendlyReady = promise
+  return promise
 }
 
 /** Open Calendly’s official popup calendar (used by “Book a free demo” clicks). */

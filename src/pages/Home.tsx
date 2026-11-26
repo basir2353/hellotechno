@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 
 import { Mark } from '../components/Logo'
 import { CalendlyEmbed } from '../components/CalendlyEmbed'
+import { HeroVideo } from '../components/HeroVideo'
 
 import { Diagram } from '../components/Diagram'
 import { HeroOrbit } from '../components/HeroOrbit'
@@ -878,6 +879,7 @@ export function Home() {
   return (
     <main id="main">
       <Hero />
+      <HeroVideo />
       <ChannelStrip />
       <Diagram />
       <Platform />
